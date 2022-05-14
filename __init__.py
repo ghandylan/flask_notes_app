@@ -1,7 +1,7 @@
 from flask import Flask
 
 def createApp():
-    app = Flask(__name__)
+    app = Flask(__name__, template_folder='templates')
     app.config['SECRET_KEY'] = 'mysecret'
 
     from views import views
