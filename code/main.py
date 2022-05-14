@@ -1,4 +1,4 @@
-from notes_flask import createApp
+from __init__ import createApp
 
 app = createApp()
 
