@@ -12,7 +12,7 @@
     <title>{% block title %}Home{% endblock %}</title>
 </head>
 
-<body>
+<body style="overflow-y:hidden;">
     <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">flaskNotes</a>
@@ -98,6 +98,12 @@
         </div>
         <!-- Copyright -->
     </footer>
+
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='index.js') }}"
+    ></script>
+
 </body>
 
 </html>
