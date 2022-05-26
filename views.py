@@ -23,7 +23,23 @@ def home():
 
     return render_template("home.html", user=current_user)
 
+@views.route('/edit', methods = ['POST'])
+@login_required
 
+def edit():
+    note_id = request.form.get('note_id')
+    note_data = request.form.get('note_data')
+    if len(note_data) < 1:
+        flash('Content is required', category='error')
+    else:
+        note = Note.query.filter_by(id=note_id).first()
+        note.data = note_data
+        my_database.session.commit()
+        flash('Note updated', category='success')
+
+    return jsonify({'status': 'ok'})
+
+    
 @views.route('/delete-note', methods=['POST'])
 def delete_note():
     note = json.loads(request.data)

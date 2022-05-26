@@ -18,10 +18,12 @@ def login():
                 flash('You are now logged in', category='success')
                 login_user(user, remember=True)
                 return redirect(url_for('/views.home'))
+            # create an elif statement if user enters empty password
+            
             else:
                 flash('Incorrect password', category='error')
         else: 
-            flash('No user found', category='error')  
+            flash('User not found', category='error')  
     return render_template('login.html', user=current_user)
 
 
