@@ -2,107 +2,103 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width" , initial-scale=1>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width" , initial-scale=1>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <title>{% block title %}Home{% endblock %}</title>
+  <title>{% block title %}Home{% endblock %}</title>
 </head>
 
 <body style="overflow-y:hidden;">
-    <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">flaskNotes</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-                <ul class="navbar-nav">
-                    {% if user.is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Welcome, {{user.first_name}}
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="/logout">Log Out</a></li>
-                        </ul>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Log In</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sign-up">Sign Up</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    {% for category, message in messages %}
-    {% if category == 'error' %}
-    <div class="alert alert-danger alert-dismissable fade show" role="alert">
-        {{ message }}
-        <button type="button" class="btn-close btn-close-black float-end" data-bs-dismiss="alert">
+  <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">flaskNotes</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Welcome, {{user.first_name}}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+            </ul>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Log In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/sign-up">Sign Up</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
     </div>
-    {% else %}
-    <div class="alert alert-success alert-dismissable fade show" role="alert">
-        {{ message }}
-        <button type="button" class="btn-close btn-close-black float-end" data-bs-dismiss="alert">
+  </nav>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  {% for category, message in messages %}
+  {% if category == 'error' %}
+  <div class="alert alert-danger alert-dismissable fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close btn-close-black float-end" data-bs-dismiss="alert">
+  </div>
+  {% else %}
+  <div class="alert alert-success alert-dismissable fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close btn-close-black float-end" data-bs-dismiss="alert">
+  </div>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+  {% block content %}
+  {% endblock %}
+
+  <!-- place footer at bottom -->
+  <footer class="text-center bg-dark text-white fixed-bottom">
+    <!-- Grid container -->
+    <div class="container pt-0">
+      <!-- Section: Social media -->
+      <section class="mb-0">
+        <!-- Facebook -->
+        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="https://www.facebook.com/ghandylan/"
+          target="_blank" role="button" data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
+
+        <!-- Instagram -->
+        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="https://www.instagram.com/ghandylan/"
+          target="_blank" role="button" data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
+
+        <!-- Linkedin -->
+        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="https://www.linkedin.com/in/dylantayag/"
+          target="-" role="button" data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
+        <!-- Github -->
+        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="https://github.com/ghandylan" target="_blank"
+          role="button" data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
+      </section>
+      <!-- Section: Social media -->
     </div>
-    {% endif %}
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
+    <!-- Grid container -->
 
-    {% block content %}
-    {% endblock %}
+    <!-- Copyright -->
+    <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2022 Copyright:
+      <a class="text-white" href="">Dylan Louis Tayag</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
 
-    <!-- place footer at bottom -->
-    <footer class="text-center bg-dark text-white fixed-bottom">
-        <!-- Grid container -->
-        <div class="container pt-0">
-            <!-- Section: Social media -->
-            <section class="mb-0">
-                <!-- Facebook -->
-                <a class="btn btn-link btn-floating btn-lg text-white m-1" href="https://www.facebook.com/ghandylan/"
-                    target="_blank" role="button" data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
-
-                <!-- Instagram -->
-                <a class="btn btn-link btn-floating btn-lg text-white m-1" href="https://www.instagram.com/ghandylan/"
-                    target="_blank" role="button" data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
-
-                <!-- Linkedin -->
-                <a class="btn btn-link btn-floating btn-lg text-white m-1"
-                    href="https://www.linkedin.com/in/dylantayag/" target="-" role="button"
-                    data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
-                <!-- Github -->
-                <a class="btn btn-link btn-floating btn-lg text-white m-1" href="https://github.com/ghandylan"
-                    target="_blank" role="button" data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
-            </section>
-            <!-- Section: Social media -->
-        </div>
-        <!-- Grid container -->
-
-        <!-- Copyright -->
-        <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2022 Copyright:
-            <a class="text-white" href="">Dylan Louis Tayag</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
-
-    <script
-      type="text/javascript"
-      src="{{ url_for('static', filename='index.js') }}"
-    ></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
 
 </body>
 
