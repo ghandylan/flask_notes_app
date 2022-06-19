@@ -3,36 +3,36 @@
 
 {% block content %}
 
+<div class="container rounded" style="padding-top: 5%;padding-bottom: 20%">
+  <div class="col-md-6 mx-auto">
+    <div class="card">
+      <div class="card-header text-white bg-secondary rounded">
+        <h4>Notes</h4>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+          <div class="form-group">
+            <label for="note">Note</label>
+            <textarea class="form-control" id="note" name="note" rows="3"></textarea>
+            <br>
+            <div align="center">
+              <button type="submit" class="btn btn-primary">Add Note</button>
+            </div>
+          </div>
+          <br>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="list-group">
     {% for note in user.notes %}
     <li class="list-group-item">{{note.data}}
         <button class="btn btn-danger float-end" onclick="deleteNote( {{note.id}} )">Delete</button>
-        <!-- update note button -->
-        <button class="btn btn-primary float-end" onclick="updateNote( {{note.id}} )">Update</button>
     </li>
     {% endfor %}
 </div>
 
-<div class="container rounded" style="padding-top: 5%;padding-bottom: 20%">
-    <div class="col-md-6 mx-auto">
-        <div class="card">
-            <div class="card-header text-white bg-secondary rounded">
-                <h4>Notes</h4>
-            </div>
-            <div class="card-body">
-                <form method="POST">
-                    <div class="form-group">
-                        <label for="note">Note</label>
-                        <textarea class="form-control" id="note" name="note" rows="3"></textarea>
-                        <br>
-                        <div align="center">
-                            <button type="submit" class="btn btn-primary">Add Note</button>
-                        </div>
-                    </div>
-                    <br>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+
 {% endblock %}
