@@ -22,4 +22,4 @@ Basic note taking app made with Flask.
 \
 &nbsp;
 
-Inspired by [Tech With Tim](https://youtu.be/dam0GPOAvVI)'s CRUD tutorial.
+Inspired by <a href="https://youtu.be/dam0GPOAvVI" target="_blank">Tech With Tim</a>'s CRUD tutorial.
