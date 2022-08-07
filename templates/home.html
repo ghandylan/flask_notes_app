@@ -3,6 +3,15 @@
 
 {% block content %}
 
+<div class="list-group">
+  {% for note in user.notes %}
+  <li class="list-group-item">{{note.data}}
+    <button class="btn btn-danger float-end" onclick="deleteNote( {{note.id}} )">Delete</button>
+    <!-- update note button -->
+  </li>
+  {% endfor %}
+</div>
+
 <div class="container rounded" style="padding-top: 5%;padding-bottom: 20%">
   <div class="col-md-6 mx-auto">
     <div class="card">
@@ -25,14 +34,4 @@
     </div>
   </div>
 </div>
-
-<div class="list-group">
-    {% for note in user.notes %}
-    <li class="list-group-item">{{note.data}}
-        <button class="btn btn-danger float-end" onclick="deleteNote( {{note.id}} )">Delete</button>
-    </li>
-    {% endfor %}
-</div>
-
-
 {% endblock %}

@@ -61,7 +61,7 @@ def register():
             my_database.session.add(new_user)
             my_database.session.commit()
             flash('You have successfully registered', category='success')
-            login_user(user, remember=True)
+            login_user(new_user, remember=True)
             return redirect(url_for('/views.home'))
 
     return render_template('sign-up.html',user=current_user)    

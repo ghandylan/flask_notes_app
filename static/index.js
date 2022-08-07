@@ -8,9 +8,7 @@ function deleteNote(noteId) {
     });
 }
 
-// update note function
-// Language: javascript
-// Path: codes\public\python\flask_notes_crud\static\index.js
+
 function updateNote(noteId) {
     fetch('/update-note',
     {   
