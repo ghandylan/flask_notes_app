@@ -18,8 +18,7 @@ def login():
                 flash('You are now logged in', category='success')
                 login_user(user, remember=True)
                 return redirect(url_for('/views.home'))
-            # create an elif statement if user enters empty password
-            
+            # create an elif statement if user enters empty password 
             else:
                 flash('Incorrect password', category='error')
         else: 
